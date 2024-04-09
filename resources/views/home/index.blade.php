@@ -17,5 +17,18 @@
         </a>
         <a href="{{route('tasks.all')}}"><li>Tasks</li></a>
     </ul>
+
     <img class="test-img" src="{{asset('img/img1.webp')}}" alt="foto da mesa">
+
+    <hr>
+
+    <h5>A soma é {{$sum}}</h5>
+    <h5>{{$helloVar}}</h5>
+
+    <hr>
+
+    <h5>{{$infoCesae['name']}}, </h5>
+    <h5>{{$infoCesae['address']}}, </h5>
+    <h5>{{$infoCesae['email']}} </h5>
+
 @endsection

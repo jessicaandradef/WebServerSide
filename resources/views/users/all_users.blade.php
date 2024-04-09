@@ -6,5 +6,8 @@
 
 @section('content')
     <h2>Olá, eu sou o utilizador!</h2>
+
+    <h3>{{$cesaeInfo['name']}}, {{$cesaeInfo['address']}}</h3>
+
     <h3>Clique <a href="{{route('home.index')}}">aqui</a> para voltar para a pagina inicial.</h3>
 @endsection

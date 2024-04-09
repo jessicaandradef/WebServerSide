@@ -19,3 +19,4 @@ Route::get('/tasks', [IndexController::class, 'tasks'])->name('tasks.all');
 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
 Route::fallback([IndexController::class, 'fe']);
+
