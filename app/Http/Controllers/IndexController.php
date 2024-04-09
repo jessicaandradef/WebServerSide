@@ -20,7 +20,6 @@ class IndexController extends Controller
 
         $infoCesae = $this -> getCesaeInfo();
 
-
         return view('home.index', compact('sum', 'helloVar', 'infoCesae', 'infoCesae'));
     }
 
