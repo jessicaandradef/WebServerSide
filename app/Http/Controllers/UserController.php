@@ -12,8 +12,12 @@ class UserController extends Controller
         $cesaeInfo = $this-> getCesaeInfo();
         $allUsers = $this-> getUsers();
 
+        $superUser = DB::table('users') ->where('name', 'luis') -> first();
+
+       // dd($superUsers);
+
        // para fazer debug manual: dd($cesaeInfo);
-        return view('users.all_users', compact('cesaeInfo', 'allUsers'));
+        return view('users.all_users', compact('cesaeInfo', 'allUsers', 'superUser'));
     }
 
     public function helloUser($name){
@@ -25,18 +29,25 @@ class UserController extends Controller
             'name' => 'cesae',
             'address' => 'exemplo rua'
         ];
-
         return $cesaeInfo;
     }
 
     protected function getUsers(){
+        //para ir buscar os users da base de dados;
+        $users = DB::table('users')
+                //->where('name', 'luis') para selecionar um usuario especifico
+                ->get();
 
-        $users = [
+                //faz o debug para confirmar:
+                //dd($users); consigo ver o array de objetos
+
+                //inserir dados manualmente
+     /*   $users = [
             ['id' => 1, 'name' => 'Jessica', 'telefone' =>'9154874521'],
             ['id' => 2,  'name' => 'Luis', 'telefone' =>'9154874521'],
             ['id' => 3,  'name' =>'Miguel', 'telefone' =>'9154874521'],
             ['id' => 4,  'name' =>'Ana', 'telefone' =>'9154874521'],
-        ];
+        ];*/
 
         return $users;
     }
@@ -54,10 +65,10 @@ class UserController extends Controller
             [
                 'email' => 'jessicaaaa@gmail',
             ],
-        [
+            [
             'name' => 'jessicaTeste',
             'password' => 123654
-        ]);
+            ]);
 
         //para inserir vários dados na base de dados!
 
@@ -67,6 +78,5 @@ class UserController extends Controller
           ['name' =>  'mainha', 'email' => 'mariole4s@gmail','password' => 65478],
         ['name' =>  'caio', 'email' => 'mariole4s@gmail','password' => 65478]] */
     }
-
 
 }

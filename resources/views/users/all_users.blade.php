@@ -11,6 +11,7 @@
 
     <h3>Clique <a href="{{route('home.index')}}">aqui</a> para voltar para a pagina inicial.</h3>
 
+    <h2>Meu super user: {{$superUser -> name}}, {{$superUser -> email}}</h2> <!--só vai retornar 01 linha , por isso que não preciso fazer foreach-->
     <table class="table table-dark">
         <thead>
           <tr>
@@ -21,14 +22,14 @@
         </thead>
         <tbody>
 
-
           @foreach ($allUsers as $user)
             <tr>
-                <th scope="row">{{$user['id']}}</th>
-                <td>{{$user['name']}} </td>
-                <td>{{$user['telefone']}} </td>
+                <th scope="row">{{$user ->id}}</th>  <!-- é assim que acedo ao objeto -->
+                <td>{{$user ->name}} </td>
+                <td>{{$user -> email}} </td>
             </tr>
            @endforeach
+
         </tbody>
       </table>
 

@@ -47,7 +47,7 @@
     </nav>
 
     <div class="container">
-        @yield('content') //secção do conteudo, será encaixado o conteudo que quisermos.
+        @yield('content') <!--secção do conteudo, será encaixado o conteudo que quisermos. -->
     </div>
 
 
