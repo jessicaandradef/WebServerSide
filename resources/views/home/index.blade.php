@@ -13,7 +13,7 @@
             <li>Hello</li>
         </a>
         <a href="{{ route('users.all')}}">
-            <li>User</li>
+            <li>All Users</li>
         </a>
         <a href="{{route('tasks.all')}}"><li>Tasks</li></a>
         <a href="{{route('users.view')}}"><li>User</li></a>

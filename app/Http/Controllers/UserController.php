@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -43,5 +44,29 @@ class UserController extends Controller
     public function viewUser(){
         return view('users.user_view');
     }
+
+    public function addUser(){
+
+        //do lado esquero a coluna, e do lado direito os dados que vamos enviar
+
+        DB::table('users')
+        ->updateOrInsert( //primeiro faz a validação, se existir aquele parametro, faz o update, se nao existir faz um novo registo
+            [
+                'email' => 'jessicaaaa@gmail',
+            ],
+        [
+            'name' => 'jessicaTeste',
+            'password' => 123654
+        ]);
+
+        //para inserir vários dados na base de dados!
+
+         /* [ ['name' =>  'marioles', 'email' => 'mariole4s@gmail','password' => 65478],
+          ['name' =>  'jessica', 'email' => 'mariole4s@gmail','password' => 65478],
+          ['name' =>  'sarinha', 'email' => 'mariole4s@gmail','password' => 65478],
+          ['name' =>  'mainha', 'email' => 'mariole4s@gmail','password' => 65478],
+        ['name' =>  'caio', 'email' => 'mariole4s@gmail','password' => 65478]] */
+    }
+
 
 }

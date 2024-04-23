@@ -11,7 +11,6 @@
 
     <h3>Clique <a href="{{route('home.index')}}">aqui</a> para voltar para a pagina inicial.</h3>
 
-
     <table class="table table-dark">
         <thead>
           <tr>
