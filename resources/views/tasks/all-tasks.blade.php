@@ -10,6 +10,8 @@
             <th scope="col">ID da tarefa:</th>
             <th scope="col">Tarefa: </th>
             <th scope="col">Descrição: </th>
+            <th scope="col">Responsavel pela tarefa: </th>
+
           </tr>
         </thead>
         <tbody>
@@ -19,6 +21,7 @@
                 <th scope="row">{{$tasks ->id}}</th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$tasks ->name}} </td>
                 <td>{{$tasks -> description}} </td>
+                <td>{{$tasks -> usname}}</td>
             </tr>
            @endforeach
 

@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    //Os tipos de utilizador podem ser definidos aqui(Ex: admin, user, visitante do site)
 
     /**
      * The attributes that are mass assignable.

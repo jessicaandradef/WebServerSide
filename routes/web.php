@@ -16,12 +16,15 @@ Route::get('/hello/{name}', [UserController::class, 'helloUser']);
 
 Route::get('/users', [UserController::class, 'users'])->name('users.all');
 
-Route::get('/user', [UserController::class, 'viewUser']) ->name ('users.view');
+Route::get('/user/{id}', [UserController::class, 'viewUser']) ->name ('users.view');
 //quando estiver registado a rota vai a função 'viewUser';
 
 Route::get('/add-user', [UserController::class, 'addUser']) ->name ('users.add');
 //rota que nao retorna nada mas que quando chamada insere um utilizador no BD
 //fazendo operações com o QueryBuilder
+
+Route::get('/delete-user', [UserController::class, 'deleteUser']) ->name ('delete.add');
+
 
 Route::get('/tasks', [TasksController::class, 'tasks'])->name('tasks.all'); //'tasks' é o nome da função
 

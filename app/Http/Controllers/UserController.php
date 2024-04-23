@@ -34,6 +34,8 @@ class UserController extends Controller
 
     protected function getUsers(){
         //para ir buscar os users da base de dados;
+        //fazendo com DC query builder:
+
         $users = DB::table('users')
                 //->where('name', 'luis') para selecionar um usuario especifico
                 ->get();
@@ -49,10 +51,15 @@ class UserController extends Controller
             ['id' => 4,  'name' =>'Ana', 'telefone' =>'9154874521'],
         ];*/
 
+     //  $users = User::all(); //usando MODELS
+
         return $users;
     }
 
-    public function viewUser(){
+    public function viewUser($id){
+
+        $user = DB::table('users') -> where('id', $id) -> first();
+
         return view('users.user_view');
     }
 

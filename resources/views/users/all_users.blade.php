@@ -18,6 +18,8 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Telefone</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +29,8 @@
                 <th scope="row">{{$user ->id}}</th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$user ->name}} </td>
                 <td>{{$user -> email}} </td>
+                <td><a href="{{route('users.view', $user -> id)}}" class="btn btn-info">Ver</a></td>
+                <td><a href="" class="btn btn-danger">Apagar</a></td>
             </tr>
            @endforeach
 
