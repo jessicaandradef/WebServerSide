@@ -40,6 +40,8 @@ class UserController extends Controller
         return $users;
     }
 
-    
+    public function viewUser(){
+        return view('users.user_view');
+    }
 
 }

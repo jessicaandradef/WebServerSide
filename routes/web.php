@@ -15,6 +15,9 @@ Route::get('/hello/{name}', [UserController::class, 'helloUser']);
 
 Route::get('/users', [UserController::class, 'users'])->name('users.all');
 
+Route::get('/user', [UserController::class, 'viewUser']) ->name ('users.view');
+//quando estiver registado a rota vai a função 'viewUser';
+
 Route::get('/tasks', [IndexController::class, 'tasks'])->name('tasks.all');
 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
