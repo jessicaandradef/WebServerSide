@@ -60,9 +60,18 @@ class UserController extends Controller
 
         $user = DB::table('users') -> where('id', $id) -> first();
 
-        return view('users.user_view');
+        return view('users.user_view', compact('user'));
+
     }
 
+    public function deleteUser($id){
+        DB::table('tasks') -> where('user_id', $id) -> delete();
+       DB::table('users') -> where('id', $id) -> delete();
+
+       return redirect() -> back();
+        //começa a dar erro para apagar porque tem usuario com tasks associadas; então tenho que primeiro apagar uma tarefa e só depois o usuário
+        //SE tiver delete on cascade apaga os 2;
+    }
     public function addUser(){
 
         //do lado esquero a coluna, e do lado direito os dados que vamos enviar

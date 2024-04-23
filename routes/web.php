@@ -23,7 +23,7 @@ Route::get('/add-user', [UserController::class, 'addUser']) ->name ('users.add')
 //rota que nao retorna nada mas que quando chamada insere um utilizador no BD
 //fazendo operações com o QueryBuilder
 
-Route::get('/delete-user', [UserController::class, 'deleteUser']) ->name ('delete.add');
+Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']) ->name ('users.delete');
 
 
 Route::get('/tasks', [TasksController::class, 'tasks'])->name('tasks.all'); //'tasks' é o nome da função
