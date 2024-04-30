@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GiftsController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TasksController;
 
@@ -29,6 +30,13 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']) ->name ('
 Route::get('/tasks', [TasksController::class, 'tasks'])->name('tasks.all'); //'tasks' é o nome da função
 
 Route::get('/addTasks', [TasksController::class, 'addTasks'])->name('tasks.all');
+
+Route::get('/gifts', [GiftsController::class, 'gifts']) -> name('gifts.all');
+
+Route::get('/gifts/{id}', [GiftsController::class, 'viewGift']) -> name('gifts.view');
+
+Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGift']) ->name ('gifts.delete');
+
 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
 Route::fallback([IndexController::class, 'fe']);

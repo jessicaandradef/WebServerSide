@@ -15,7 +15,12 @@
         <a href="{{ route('users.all')}}">
             <li>All Users</li>
         </a>
-        <a href="{{route('tasks.all')}}"><li>Tasks</li></a>
+        <a href="{{route('tasks.all')}}">
+            <li>Tasks</li>
+        </a>
+        <a href="{{ route('gifts.all') }}">
+            <li>Gifts</li>
+        </a>
     </ul>
 
     <img class="test-img" src="{{asset('img/img1.webp')}}" alt="foto da mesa">
