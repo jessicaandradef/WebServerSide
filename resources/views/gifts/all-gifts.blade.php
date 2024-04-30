@@ -24,9 +24,9 @@
 
                 <td><a href="{{route('gifts.view', $gifts -> id)}}" class="btn btn-info">Ver</a></td>
                 <td><a href="{{route('gifts.delete', $gifts -> id)}}" class="btn btn-info">Apagar</a></td>
-
             </tr>
 
             @endforeach
-
+        </tbody>
+    </table>
 @endsection

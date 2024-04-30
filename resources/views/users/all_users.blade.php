@@ -37,4 +37,12 @@
         </tbody>
       </table>
 
+      <a type="submit" href="{{route('create.user')}}" class="btn btn-primary">Add User</a>
+
+      @if (session('message'))
+        <div class="alert alert-success">{{session('message')}}</div>
+      @endif
+
+
+
 @endsection

@@ -37,6 +37,10 @@ Route::get('/gifts/{id}', [GiftsController::class, 'viewGift']) -> name('gifts.v
 
 Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGift']) ->name ('gifts.delete');
 
+Route::get('/create-user', [UserController::class, 'createUser']) ->name ('create.user');
+
+Route::post('/store-user', [UserController::class, 'storeUser']) ->name ('store.user');
+
 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
 Route::fallback([IndexController::class, 'fe']);

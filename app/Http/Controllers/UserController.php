@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -93,6 +95,33 @@ class UserController extends Controller
           ['name' =>  'sarinha', 'email' => 'mariole4s@gmail','password' => 65478],
           ['name' =>  'mainha', 'email' => 'mariole4s@gmail','password' => 65478],
         ['name' =>  'caio', 'email' => 'mariole4s@gmail','password' => 65478]] */
+    }
+
+    public function createUser(){
+
+        return view('users.create_users'); //vai retornar a view com a pagina e com o formulario
+    }
+
+   public function storeUser(Request $request){
+
+   //dd($request-> all()); //Acede a tudo que vem do request!
+
+   
+
+        $request->validate([
+            'name' => 'string|max:50',
+            'email' => 'required|email|unique:users', //ou seja, tem que ser unico na tabela do users
+            'password' => 'required'
+        ]);
+
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request -> password),
+        ]);
+
+        return redirect() -> route('users.all') ->with('message', 'Contacto adicionado com sucesso');
+
     }
 
 }
