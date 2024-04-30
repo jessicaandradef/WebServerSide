@@ -46,7 +46,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container py-5">
         @yield('content') <!--secção do conteudo, será encaixado o conteudo que quisermos. -->
     </div>
 

@@ -5,14 +5,18 @@
 @endsection
 
 @section('content')
-    <h2>Olá, eu sou o utilizador!</h2>
 
-    <h3>{{$cesaeInfo['name']}}, {{$cesaeInfo['address']}}</h3>
+  {{--  <h3>{{$cesaeInfo['name']}}, {{$cesaeInfo['address']}}</h3>
 
     <h3>Clique <a href="{{route('home.index')}}">aqui</a> para voltar para a pagina inicial.</h3>
 
-    <h2>Meu super user: {{$superUser -> name}}, {{$superUser -> email}}</h2> <!--só vai retornar 01 linha , por isso que não preciso fazer foreach-->
-    <table class="table table-dark">
+    <h2>Meu super user: {{$superUser -> name}}, {{$superUser -> email}}</h2>--}} <!--só vai retornar 01 linha , por isso que não preciso fazer foreach-->
+
+    @if (session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+  @endif
+
+    <table class="table table-light">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -37,11 +41,8 @@
         </tbody>
       </table>
 
-      <a type="submit" href="{{route('create.user')}}" class="btn btn-primary">Add User</a>
+      <a type="submit" href="{{route('create.user')}}" class="btn btn-warning">Add User</a>
 
-      @if (session('message'))
-        <div class="alert alert-success">{{session('message')}}</div>
-      @endif
 
 
 

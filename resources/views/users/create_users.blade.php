@@ -2,25 +2,6 @@
 
 @section('content')
 
-  {{-- <form method="POST" action="{{route('store.user')}}">
-    @csrf
-
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" name="name" value="" id="nome" />
-    </div>
-    <div>
-        <label for="email">E-mail:</label>
-        <input type="email" name="email"  value="" id="email" />
-    </div>
-    <div>
-        <label for="email">Senha:</label>
-        <input type="password" name="password"  value="" id="password" />
-    </div>
-    <button type="submit">Add User</button>
-</form> --}}
-
-
 <form method="POST" action="{{route('store.user')}}">    <!-- rota para onde será enviada os dados -->
     @csrf   <!-- helper de validação do Laravel-->
 
@@ -45,9 +26,9 @@
       <label for="password">Password:</label>
       <input type="password" class="form-control" name="password" value="" id="password" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-primary">Add User</button>
+    <button type="submit" class="btn btn-info my-3">Add User</button>
 
-    
+
 </form>
 
 @endsection

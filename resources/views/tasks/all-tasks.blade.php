@@ -28,4 +28,7 @@
         </tbody>
       </table>
 
+      <a type="submit" href="{{route('create.task')}}" class="btn btn-warning">Add Task</a>
+
+
 @endsection

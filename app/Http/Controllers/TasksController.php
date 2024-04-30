@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,5 +37,29 @@ class TasksController extends Controller
         ]);
     }
 
+    public function createTask(){
+
+        return view('tasks.create_tasks');
+    }
+
+    public function storeTask(Request $request){
+
+        //dd($request->all());
+
+        $request->validate([
+            'name' => 'string|max:50',
+            'description' => 'required|string', //ou seja, tem que ser unico na tabela do users
+            'user_id' => 'required|unique:users'
+        ]);
+
+        DB::table('tasks')->insert([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+        ]);
+
+        return redirect() -> route('tasks.all') ->with('message', 'Tarefa adicionada com sucesso');
+
+    }
 
 }

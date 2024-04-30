@@ -24,12 +24,23 @@ Route::get('/add-user', [UserController::class, 'addUser']) ->name ('users.add')
 //rota que nao retorna nada mas que quando chamada insere um utilizador no BD
 //fazendo operações com o QueryBuilder
 
+Route::get('/create-user', [UserController::class, 'createUser']) ->name ('create.user');
+
+Route::post('/store-user', [UserController::class, 'storeUser']) ->name ('store.user');
+
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']) ->name ('users.delete');
 
+//task router
 
 Route::get('/tasks', [TasksController::class, 'tasks'])->name('tasks.all'); //'tasks' é o nome da função
 
-Route::get('/addTasks', [TasksController::class, 'addTasks'])->name('tasks.all');
+Route::get('/create-task', [TasksController::class, 'createTask']) ->name('create.task');
+
+Route::post('/store-task', [TasksController::class, 'storeTask']) ->name('store.task');
+
+//Route::get('/addTasks', [TasksController::class, 'addTasks'])->name('tasks.all');
+
+//gifts router
 
 Route::get('/gifts', [GiftsController::class, 'gifts']) -> name('gifts.all');
 
@@ -37,9 +48,6 @@ Route::get('/gifts/{id}', [GiftsController::class, 'viewGift']) -> name('gifts.v
 
 Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGift']) ->name ('gifts.delete');
 
-Route::get('/create-user', [UserController::class, 'createUser']) ->name ('create.user');
-
-Route::post('/store-user', [UserController::class, 'storeUser']) ->name ('store.user');
 
 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
