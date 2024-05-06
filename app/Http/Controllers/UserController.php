@@ -106,7 +106,6 @@ class UserController extends Controller
 
    //dd($request-> all()); //Acede a tudo que vem do request!
 
-   
 
         $request->validate([
             'name' => 'string|max:50',

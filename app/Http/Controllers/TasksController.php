@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -38,8 +39,13 @@ class TasksController extends Controller
     }
 
     public function createTask(){
+        $allUsers = User::get()->all();
+        // dd($allUsers);
+         return view('tasks.create_tasks', compact('allUsers'));
+    }
 
-        return view('tasks.create_tasks');
+    public function getAllUsers() {
+
     }
 
     public function storeTask(Request $request){
@@ -49,8 +55,11 @@ class TasksController extends Controller
         $request->validate([
             'name' => 'string|max:50',
             'description' => 'required|string', //ou seja, tem que ser unico na tabela do users
-            'user_id' => 'required|unique:users'
+            'user_id' => 'required|exists:users,id' //'user_id' é como está na tabela de TASKS,  exists:users,id -> tabela de USERS, ID é como está na tabela de users, e tenho que verificar SE EXISTS na tabela de usuario;
+            //'mission_id' => 'required|exists:missions,id', missions is the table name and id is the referenced column name on mission table ''mission_id' => 'required|exists:table_name,referenced_column'
         ]);
+
+       //dd($request-> all());
 
         DB::table('tasks')->insert([
             'name' => $request->name,

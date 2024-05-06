@@ -18,8 +18,21 @@
 
     <div class="form-group">
         <label for="user_id">User ID:</label>
-        <input type="text" class="form-control" name="user_id" value="" id="email"  placeholder="Enter description">
-      </div>
+
+    <div class="dropdown">
+        <label class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Nome Usuário:
+        </label>
+
+        <select name="user_id" class="dropdown">
+
+            @foreach ($allUsers as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
+    </div>
 
 
     <button type="submit" class="btn btn-info my-3">Add Task</button>
