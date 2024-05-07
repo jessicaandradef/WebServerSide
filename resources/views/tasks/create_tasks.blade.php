@@ -10,30 +10,34 @@
         <label for="nome">Nome da tarefa:</label>
         <input type="text" class="form-control" name="name" value="" id="nome"  placeholder="Enter task">
       </div>
+      @error('user_id')
+      Nome invalido!
+    @enderror
 
     <div class="form-group">
       <label for="description">Descrição da tarefa:</label>
       <input type="text" class="form-control" name="description" value="" id="description"  placeholder="Enter description">
     </div>
+    @error('user_id')
+    Descrição invalida!
+@enderror
 
     <div class="form-group">
-        <label for="user_id">User ID:</label>
 
-    <div class="dropdown">
-        <label class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Nome Usuário:
-        </label>
-
-        <select name="user_id" class="dropdown">
-
-            @foreach ($allUsers as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>
-            @endforeach
-        </select>
+    <div class=" d-flex column mt-3">
+        <label >
+        Nome Usuário: </label>
+            <select name="user_id" class="dropdown rounded-2 mx-2">
+                        @foreach ($allUsers as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+            </select>
     </div>
 
     </div>
-
+    @error('user_id')
+        User_id invalido!
+    @enderror
 
     <button type="submit" class="btn btn-info my-3">Add Task</button>
 

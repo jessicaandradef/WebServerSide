@@ -38,21 +38,49 @@ class TasksController extends Controller
         ]);
     }
 
-    public function createTask(){
+    public function viewTask($id){
+
         $allUsers = User::get()->all();
+        $task = DB::table('tasks') -> where('id', $id) -> first();
+        $userInfo = DB::table('users') -> where('id', $task->user_id) -> first();
+
+      //  dd($userInfo);
+
+        return view('tasks.task_view', compact('task', 'allUsers', 'userInfo'));
+
+    }
+
+    public function createTask(){
+        $allUsers = User::get()->all(); //posso fazer só User::all();
         // dd($allUsers);
          return view('tasks.create_tasks', compact('allUsers'));
     }
 
-    public function getAllUsers() {
 
-    }
-
-    public function storeTask(Request $request){
+    public function storeTask(Request $request){ //o request é a classe que está definida para receber os dados;
 
         //dd($request->all());
 
-        $request->validate([
+        if(isset($request->id)){
+
+            $request->validate([
+                'name' => 'string|max:50',
+                'description' => 'string|max:50',
+                'user_id' => 'required|exists:users,id'
+
+            ]);
+
+            Task::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'description' => $request->description,   //lado esquerdo da base de dados, direito do código
+                'user_id' => $request->user_id,
+            ]);
+
+            return redirect() -> route('tasks.all') ->with('message', 'Task ' .$request->name .' atualizado com sucesso');
+
+        } else {
+             $request->validate([
             'name' => 'string|max:50',
             'description' => 'required|string', //ou seja, tem que ser unico na tabela do users
             'user_id' => 'required|exists:users,id' //'user_id' é como está na tabela de TASKS,  exists:users,id -> tabela de USERS, ID é como está na tabela de users, e tenho que verificar SE EXISTS na tabela de usuario;
@@ -68,6 +96,7 @@ class TasksController extends Controller
         ]);
 
         return redirect() -> route('tasks.all') ->with('message', 'Tarefa adicionada com sucesso');
+        }
 
     }
 

@@ -104,10 +104,29 @@ class UserController extends Controller
 
    public function storeUser(Request $request){
 
-   //dd($request-> all()); //Acede a tudo que vem do request!
+  // dd($request-> all()); //Acede a tudo que vem do request!
+
+        if(isset($request->id)){  //se já existir será um UPDATE, se não existir será um create
+
+            $request->validate([
+                'name' => 'string|max:50',
+                'address' => 'string', //ou seja, tem que ser unico na tabela do users
+                'cpostal' => 'string',
+            ]);
+
+            User::where('id', $request->id)
+            ->update([
+                'name' => $request->name,   //lado esquerdo da base de dados, direito do código
+                'address' => $request->address,
+                'cpostal' => $request -> cpostal,
+            ]);
+
+            return redirect() -> route('users.all') ->with('message', 'User ' .$request->name .' atualizado com sucesso');
 
 
-        $request->validate([
+        }else{
+
+             $request->validate([
             'name' => 'string|max:50',
             'email' => 'required|email|unique:users', //ou seja, tem que ser unico na tabela do users
             'password' => 'required'
@@ -120,6 +139,15 @@ class UserController extends Controller
         ]);
 
         return redirect() -> route('users.all') ->with('message', 'Contacto adicionado com sucesso');
+
+        }
+
+
+
+
+    }
+
+    public function updateUser(Request $request){
 
     }
 

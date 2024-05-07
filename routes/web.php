@@ -38,6 +38,12 @@ Route::get('/create-task', [TasksController::class, 'createTask']) ->name('creat
 
 Route::post('/store-task', [TasksController::class, 'storeTask']) ->name('store.task');
 
+Route::get('/user/{id}', [TasksController::class, 'viewTask']) ->name ('task.view');
+
+
+//Route::get('/tasks/{id}', [UserController::class, 'viewUser']) ->name ('users.view');
+
+
 //Route::get('/addTasks', [TasksController::class, 'addTasks'])->name('tasks.all');
 
 //gifts router
