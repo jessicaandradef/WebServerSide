@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <form method="POST" action="{{route('store.user')}}">    <!-- rota para onde será enviada os dados -->
     @csrf   <!-- helper de validação do Laravel-->
 
@@ -47,7 +45,6 @@
       </div>
 
     <button type="submit" class="btn btn-info my-3">Update User</button>
-
 
 </form>
 

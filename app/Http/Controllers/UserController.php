@@ -11,15 +11,10 @@ class UserController extends Controller
 {
     public function users(){
 
-        $cesaeInfo = $this-> getCesaeInfo();
-        $allUsers = $this-> getUsers();
+        $allUsers = User::get()->all();
 
-        $superUser = DB::table('users') ->where('name', 'luis') -> first();
+        return view('users.all_users', compact('allUsers'));
 
-       // dd($superUsers);
-
-       // para fazer debug manual: dd($cesaeInfo);
-        return view('users.all_users', compact('cesaeInfo', 'allUsers', 'superUser'));
     }
 
     public function helloUser($name){
@@ -141,13 +136,6 @@ class UserController extends Controller
         return redirect() -> route('users.all') ->with('message', 'Contacto adicionado com sucesso');
 
         }
-
-
-
-
-    }
-
-    public function updateUser(Request $request){
 
     }
 

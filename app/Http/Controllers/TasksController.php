@@ -66,7 +66,8 @@ class TasksController extends Controller
             $request->validate([
                 'name' => 'string|max:50',
                 'description' => 'string|max:50',
-                'user_id' => 'required|exists:users,id'
+                'user_id' => 'required|exists:users,id',
+                'due_at' => 'date'
 
             ]);
 
@@ -75,6 +76,7 @@ class TasksController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,   //lado esquerdo da base de dados, direito do código
                 'user_id' => $request->user_id,
+                'due_at' => $request->due_at
             ]);
 
             return redirect() -> route('tasks.all') ->with('message', 'Task ' .$request->name .' atualizado com sucesso');

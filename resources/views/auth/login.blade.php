@@ -1,10 +1,10 @@
-
 @extends('layouts.fe')
 
+@section('title')
+<title>Login</title>
+@endsection
+
 @section('content')
-
-
-<h2>Create your account: </h2>
 
 <form>
     <div class="form-group">

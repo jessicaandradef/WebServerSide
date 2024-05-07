@@ -6,6 +6,7 @@
 
 @section('content')
 
+
   {{--  <h3>{{$cesaeInfo['name']}}, {{$cesaeInfo['address']}}</h3>
 
     <h3>Clique <a href="{{route('home.index')}}">aqui</a> para voltar para a pagina inicial.</h3>
@@ -32,9 +33,9 @@
             <tr>
                 <th scope="row">{{$user ->id}}</th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$user ->name}} </td>
-                <td>{{$user -> email}} </td>
-                <td><a href="{{route('users.view', $user -> id)}}" class="btn btn-info">Update Dados</a></td>
-                <td><a href="{{route('users.delete', $user -> id)}}" class="btn btn-danger">Apagar</a></td>
+                <td>{{$user->email}} </td>
+                <td><a href="{{route('users.view', $user->id)}}" class="btn btn-info">Update Dados</a></td>
+                <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td>
             </tr>
            @endforeach
 

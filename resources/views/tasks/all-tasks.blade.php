@@ -2,6 +2,7 @@
 @extends('layouts.fe')
 
 @section('content')
+
     <h2>Tarefas do dia</h2>
 
     @if (@session('message'))
@@ -14,6 +15,7 @@
             <th scope="col">ID da tarefa:</th>
             <th scope="col">Tarefa: </th>
             <th scope="col">Descrição: </th>
+            <th scope="col">Data: </th>
             <th scope="col">Responsavel pela tarefa: </th>
             <th scope="col">Alterar tarefa: </th>
           </tr>
@@ -26,6 +28,7 @@
                 <th scope="row">{{$tasks ->id}}</th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$tasks ->name}} </td>
                 <td>{{$tasks -> description}} </td>
+                <td>{{$tasks -> due_at}}</td>
                 <td>{{$tasks -> usname}}</td>
                 <td><a href="{{route('task.view', $tasks -> id)}}" class="btn btn-info">Update Task</a></td>
             </tr>

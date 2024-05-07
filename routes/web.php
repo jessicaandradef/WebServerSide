@@ -17,9 +17,6 @@ Route::get('/hello/{name}', [UserController::class, 'helloUser']);
 
 Route::get('/users', [UserController::class, 'users'])->name('users.all');
 
-Route::get('/user/{id}', [UserController::class, 'viewUser']) ->name ('users.view');
-//quando estiver registado a rota vai a função 'viewUser';
-
 Route::get('/add-user', [UserController::class, 'addUser']) ->name ('users.add');
 //rota que nao retorna nada mas que quando chamada insere um utilizador no BD
 //fazendo operações com o QueryBuilder
@@ -59,3 +56,7 @@ Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGift']) ->name 
 //rota fallback - o que será mostrado caso o user digitar uma rota que não existe;
 Route::fallback([IndexController::class, 'fe']);
 
+
+
+//quando estiver registado a rota vai a função 'viewUser';
+Route::get('/user/{id}', [UserController::class, 'viewUser'])->name('users.view');

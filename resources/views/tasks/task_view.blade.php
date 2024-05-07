@@ -34,6 +34,14 @@
                 </select>
         </div>
 
+        <div class="form-group">
+            <label for="nome">Data:</label>
+            <input type="date" class="form-control"  name="due_at" value="{{$task->due_at}}" id="due_at"  placeholder="{{$task->due_at}}">
+                @error('description')
+                    Data inválida
+                @enderror
+        </div>
+
 
     <button type="submit" class="btn btn-info my-3">Update Task</button>
 
