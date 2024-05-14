@@ -31,7 +31,7 @@
 
           @foreach ($allUsers as $user)
             <tr>
-                <th scope="row">{{$user ->id}}</th>  <!-- é assim que acedo ao objeto -->
+                <th scope="row"><img height="30px" width="30px" src="{{$user ->photo ? asset('storage/'.$user->photo) : asset('img/1743369.png')}}" alt=""></th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$user ->name}} </td>
                 <td>{{$user->email}} </td>
 

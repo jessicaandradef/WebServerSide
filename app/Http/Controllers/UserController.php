@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -106,18 +107,24 @@ class UserController extends Controller
   // dd($request-> all()); //Acede a tudo que vem do request!
 
         if(isset($request->id)){  //se já existir será um UPDATE, se não existir será um create
-
+            //dd($request->photo);
+            $photo = null;
             $request->validate([
                 'name' => 'string|max:50',
                 'address' => 'string', //ou seja, tem que ser unico na tabela do users
                 'cpostal' => 'string',
             ]);
 
+            if($request->hasFile('photo')){
+                $photo = Storage::putFile('userPhotos/', $request->photo);
+            }
+
             User::where('id', $request->id)
             ->update([
                 'name' => $request->name,   //lado esquerdo da base de dados, direito do código
                 'address' => $request->address,
                 'cpostal' => $request -> cpostal,
+                'photo' => $photo,
             ]);
 
             return redirect() -> route('users.all') ->with('message', 'User ' .$request->name .' atualizado com sucesso');
