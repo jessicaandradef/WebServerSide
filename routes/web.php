@@ -5,6 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GiftsController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\DashboardController;
+
+//para proteger a rota temos que usar a middleware!
 
 
 Route::get('/', [IndexController::class, 'welcome'])->name('home.welcome');
@@ -13,9 +16,13 @@ Route::get('/home', [IndexController::class, 'homePage'])->name('home.index');
 
 Route::get('/hello', [IndexController::class, 'hello'])->name('home.hello');
 
+//user routes:
+
+Route::get('/dashboard', [DashboardController::class, 'dashboardPage']); //ou seja, só entra nessa rota se o usuario estiver autenticado;
+
 Route::get('/hello/{name}', [UserController::class, 'helloUser']);
 
-Route::get('/users', [UserController::class, 'users'])->name('users.all');
+Route::get('/users', [UserController::class, 'users'])->name('users.all')->middleware('auth');
 
 Route::get('/add-user', [UserController::class, 'addUser']) ->name ('users.add');
 //rota que nao retorna nada mas que quando chamada insere um utilizador no BD
@@ -27,7 +34,7 @@ Route::post('/store-user', [UserController::class, 'storeUser']) ->name ('store.
 
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']) ->name ('users.delete');
 
-//task router
+//task router:
 
 Route::get('/tasks', [TasksController::class, 'tasks'])->name('tasks.all'); //'tasks' é o nome da função
 

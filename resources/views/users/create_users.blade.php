@@ -28,7 +28,6 @@
     </div>
     <button type="submit" class="btn btn-info my-3">Add User</button>
 
-
 </form>
 
 @endsection

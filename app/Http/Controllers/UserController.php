@@ -11,6 +11,10 @@ class UserController extends Controller
 {
     public function users(){
 
+        //if profile is admin (constante no model de admin)
+        $admin = User::TYPE_ADMIN;
+        //$adminUsers = User::where('role', $admin)->get();
+
         $allUsers = User::get()->all();
 
         return view('users.all_users', compact('allUsers'));

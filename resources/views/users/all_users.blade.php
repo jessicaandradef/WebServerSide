@@ -34,6 +34,8 @@
                 <th scope="row">{{$user ->id}}</th>  <!-- é assim que acedo ao objeto -->
                 <td>{{$user ->name}} </td>
                 <td>{{$user->email}} </td>
+
+                {{-- bloquear uma parte da blade: @if(type...)     --}}
                 <td><a href="{{route('users.view', $user->id)}}" class="btn btn-info">Update Dados</a></td>
                 <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td>
             </tr>
