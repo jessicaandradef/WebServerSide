@@ -51,5 +51,14 @@ class FortifyServiceProvider extends ServiceProvider
         return view('users.create_users');
     });
 
-    }
+    //quando esquecer a senha vai retornar a view para atualizar a senha;
+    Fortify::requestPasswordResetLinkView(function() {
+        return view('auth.forgot-password');
+    });
+
+    Fortify::resetPasswordView(function(Request $request) {
+        return view('auth.reset-password', ['request' => $request] );
+    });
+
+}
 }
